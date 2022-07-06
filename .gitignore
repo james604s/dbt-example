@@ -1,3 +1,5 @@
 /tmp
 
 /.devcontainer
+
+.DS_Store
