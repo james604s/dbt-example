@@ -1,6 +1,4 @@
 dbt-core==1.1.0
-dbt-postgres==1.1.0
 dbt-bigquery==1.1.0
-google-cloud-datacatalog==3.6.1
 markupsafe==2.0.1
 psycopg2-binary==2.9.3
