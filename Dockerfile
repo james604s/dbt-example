@@ -1,8 +1,11 @@
-FROM python:3.8.10
+FROM mcr.microsoft.com/vscode/devcontainers/python:3.9
 
-# update/upgrade
-RUN apt-get update
-RUN apt-get install -y vim
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+RUN if [ "$USER_GID" != "1000" ] || [ "$USER_UID" != "1000" ]; then groupmod --gid $USER_GID vscode && usermod --uid $USER_UID --gid $USER_GID vscode; fi
 
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+COPY requirements.txt /tmp/pip-tmp/
+RUN pip3 --disable-pip-version-check --use-deprecated=legacy-resolver --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
+    && rm -rf /tmp/pip-tmp
+
+# ENV DBT_PROFILES_DIR=/dbt

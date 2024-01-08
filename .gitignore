@@ -3,3 +3,11 @@
 /.devcontainer
 
 .DS_Store
+
+/logs
+
+credentials.json
+
+.user.yml
+
+.vscode

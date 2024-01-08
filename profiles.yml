@@ -1,0 +1,14 @@
+jaffle_shop: # this needs to match the profile in your dbt_project.yml file
+    target: sit
+    outputs:
+        sit:
+            type: bigquery
+            method: service-account
+            keyfile: /home/vscode/kkday-dbt-core-projects/credentials.json # replace this with the full path to your keyfile
+            project: lab-data-analyst # Replace this with your project id
+            dataset: sit_leonard # Replace this with dbt_your_name, e.g. dbt_bilbo
+            threads: 5
+            timeout_seconds: 300
+            location: asia-east1
+            priority: interactive
+            job_retries: 1
